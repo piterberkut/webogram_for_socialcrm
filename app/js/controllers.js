@@ -1146,7 +1146,8 @@ angular.module('myApp.controllers', ['myApp.i18n'])
           if (peersInDialogs[userID] === undefined) {
             $scope.myResults.push({
               id: userID,
-              peerString: AppUsersManager.getUserString(userID)
+              peerString: AppUsersManager.getUserString(userID),
+              userData: AppUsersManager.getUser(userID)
             })
           }
         })
@@ -1182,7 +1183,8 @@ angular.module('myApp.controllers', ['myApp.i18n'])
                 }
                 $scope.myResults.push({
                   id: peerID,
-                  peerString: AppPeersManager.getPeerString(peerID)
+                  peerString: AppPeersManager.getPeerString(peerID),
+                  userData: AppUsersManager.getUser(peerID)
                 })
               }
             })
@@ -1201,7 +1203,8 @@ angular.module('myApp.controllers', ['myApp.i18n'])
                 $scope.foundPeers.push({
                   id: peerID,
                   username: AppPeersManager.getPeer(peerID).username,
-                  peerString: AppUsersManager.getUserString(peerID)
+                  peerString: AppUsersManager.getUserString(peerID),
+                  userData: AppUsersManager.getUser(peerID)
                 })
               }
             })
@@ -1625,6 +1628,7 @@ angular.module('myApp.controllers', ['myApp.i18n'])
           if (historyResult.unreadOffset) {
             message.unreadAfter = true
           }
+          message.fromData = AppUsersManager.getUser(message.fromID)
           peerHistory.messages.push(message)
           peerHistory.ids.push(id)
         })

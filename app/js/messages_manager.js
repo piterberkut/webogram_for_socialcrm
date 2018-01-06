@@ -2405,6 +2405,7 @@ angular.module('myApp.services')
       if (message._ == 'messageService' && message.action.user_id) {
         message.action.user = AppUsersManager.getUser(message.action.user_id)
       }
+      message.userData = AppUsersManager.getUser(message.peerID)
 
       if (message.message && message.message.length) {
         message.richMessage = RichTextProcessor.wrapRichText(message.message.substr(0, 128), {noLinks: true, noLinebreaks: true})
@@ -2456,6 +2457,7 @@ angular.module('myApp.services')
         message.to_id.user_id && AppUsersManager.isBot(message.to_id.user_id)
       )
       )
+      message.fromData = AppUsersManager.getUser(message.from_id)
 
       if (message.media) {
         if (message.media.caption &&

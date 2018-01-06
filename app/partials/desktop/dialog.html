@@ -1,4 +1,10 @@
-<a class="im_dialog" ng-mousedown="dialogSelect(dialogMessage.peerString, dialogMessage.unreadCount == -1 && dialogMessage.mid)">
+<a class="im_dialog im_dialog-8" data-peer="{{dialogMessage.peerID}}"
+   data-username="{{dialogMessage.userData.username}}"
+   data-phone="{{dialogMessage.userData.rPhone}}"
+   data-firstName="{{dialogMessage.fromData.first_name}}"
+   data-lastName="{{dialogMessage.fromData.last_name}}"
+
+   ng-mousedown="dialogSelect(dialogMessage.peerString, dialogMessage.unreadCount == -1 && dialogMessage.mid)">
 
   <div class="im_dialog_meta pull-right text-right">
     <div class="im_dialog_date" ng-bind="dialogMessage.dateText"></div>

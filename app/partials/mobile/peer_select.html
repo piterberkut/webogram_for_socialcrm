@@ -40,13 +40,13 @@
       </div>
       <div my-dialogs-list-mobile modal="true" class="im_dialogs_modal_col im_dialogs_scrollable_wrap mobile_scrollable_wrap">
         <ul class="nav nav-pills nav-stacked">
-          <li class="im_dialog_wrap" my-dialog dialog-message="dialogMessage" ng-repeat="dialogMessage in dialogs track by dialogMessage.peerID"></li>
+          <li class="im_dialog_wrap im_dialog_wrap-3" my-dialog dialog-message="dialogMessage" ng-repeat="dialogMessage in dialogs track by dialogMessage.peerID"></li>
         </ul>
         <div class="im_dialogs_contacts_wrap" ng-show="myResults.length > 0">
           <h5 my-i18n="conversation_select_modal_chats_contacts"></h5>
           <ul class="nav nav-pills nav-stacked">
             <li class="im_dialog_wrap" ng-repeat="myResult in myResults track by myResult.id" ng-class="{active: curDialog.peerID == myResult.id}">
-              <a class="im_dialog" ng-click="dialogSelect(myResult.peerString)">
+              <a class="im_dialog im_dialog-9" ng-click="dialogSelect(myResult.peerString)">
                 <div class="im_dialog_photo pull-left" my-peer-photolink="::myResult.id" img-class="im_dialog_photo" watch="true"></div>
                 <div class="im_dialog_message_wrap">
                   <div class="im_dialog_peer">
@@ -65,7 +65,7 @@
           <h5 my-i18n="im_found_title"></h5>
           <ul class="nav nav-pills nav-stacked">
             <li class="im_dialog_wrap" ng-repeat="foundPeer in foundPeers track by foundPeer.id" ng-class="{active: selectedPeers[foundPeer.id] !== undefined}">
-              <a class="im_dialog" ng-click="dialogSelect(foundPeer.peerString)">
+              <a class="im_dialog im_dialog-3" ng-click="dialogSelect(foundPeer.peerString)">
                 <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo" watch="true"></div>
                 <div class="im_dialog_message_wrap">
                   <div class="im_dialog_peer">

@@ -135,7 +135,13 @@
 
         <div class="md_modal_section_peers_wrap">
 
-          <div class="md_modal_list_peer_wrap clearfix" ng-repeat="participant in participants">
+          <div class="md_modal_list_peer_wrap md_modal_list_peer_wrap-1 clearfix"
+               data-peer="{{participant.user_id}}"
+               data-username="{{participant.user.username}}"
+               data-firstName="{{participant.user.first_name}}"
+               data-lastName="{{participant.user.last_name}}"
+               data-phone="{{participant.user.rPhone}}"
+               ng-repeat="participant in participants">
 
             <a ng-if="participant.canLeave" ng-click="leaveChannel()" class="md_modal_list_peer_action pull-right" my-i18n="group_modal_menu_leave"></a>
             <a ng-if="participant.canKick" ng-click="kickFromChannel(participant.user_id)" class="md_modal_list_peer_action pull-right" my-i18n="group_modal_members_kick"></a>

@@ -108,7 +108,7 @@
 
         <div class="md_modal_section_peers_wrap">
 
-          <div class="md_modal_list_peer_wrap clearfix" ng-repeat="participant in chatFull.participants.participants | orderBy:'-user.sortStatus'">
+          <div class="md_modal_list_peer_wrap md_modal_list_peer_wrap-2 clearfix" ng-repeat="participant in chatFull.participants.participants | orderBy:'-user.sortStatus'">
 
             <a ng-if="participant.canLeave" ng-click="leaveGroup()" class="md_modal_list_peer_action pull-right" my-i18n="group_modal_menu_delete_group"></a>
             <a ng-if="participant.canKick" ng-click="kickFromGroup(participant.user_id)" class="md_modal_list_peer_action pull-right" my-i18n="group_modal_members_kick"></a>
