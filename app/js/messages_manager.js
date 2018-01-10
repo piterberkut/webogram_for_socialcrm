@@ -116,7 +116,7 @@ angular.module('myApp.services')
       })
     }
 
-    function getConversation(peerID) {
+    function getConversation (peerID) {
       var foundDialog = getDialogByPeerID(peerID)
       if (foundDialog.length) {
         return $q.when(foundDialog[0])
@@ -310,7 +310,7 @@ angular.module('myApp.services')
       })
     }
 
-    function generateDialogPinnedDate() {
+    function generateDialogPinnedDate () {
       return 0x7fffff00 + ((pinnedIndex++) & 0xff)
     }
 
@@ -969,7 +969,7 @@ angular.module('myApp.services')
       }
     }
 
-    function canMessageBeEdited(message) {
+    function canMessageBeEdited (message) {
       var goodMedias = [
         'messageMediaPhoto',
         'messageMediaDocument',
@@ -993,7 +993,7 @@ angular.module('myApp.services')
       return true
     }
 
-    function canEditMessage(messageID) {
+    function canEditMessage (messageID) {
       if (messageID <= 0 ||
           !messagesStorage[messageID]) {
         return false
@@ -1013,7 +1013,7 @@ angular.module('myApp.services')
       return true
     }
 
-    function getMessageEditData(messageID) {
+    function getMessageEditData (messageID) {
       if (!canEditMessage(messageID)) {
         return $q.reject()
       }
@@ -1041,7 +1041,7 @@ angular.module('myApp.services')
       })
     }
 
-    function canRevokeMessage(messageID) {
+    function canRevokeMessage (messageID) {
       if (messageID <= 0 ||
           !messagesStorage[messageID]) {
         return false
@@ -1515,7 +1515,7 @@ angular.module('myApp.services')
 
             case 'messageActionPhoneCall':
               delete apiMessage.fromID
-              apiMessage.action.type = 
+              apiMessage.action.type =
                 (apiMessage.pFlags.out ? 'out_' : 'in_') +
                 (
                   apiMessage.action.reason._ == 'phoneCallDiscardReasonMissed' ||
@@ -1525,7 +1525,7 @@ angular.module('myApp.services')
                 )
               break
           }
-          
+
           if (migrateFrom &&
             migrateTo &&
             !migratedFromTo[migrateFrom] &&
@@ -2313,7 +2313,7 @@ angular.module('myApp.services')
       return false
     }
 
-    function getInputEntities(entities) {
+    function getInputEntities (entities) {
       var sendEntites = angular.copy(entities)
       angular.forEach(sendEntites, function (entity) {
         if (entity._ == 'messageEntityMentionName') {
@@ -2324,7 +2324,7 @@ angular.module('myApp.services')
       return sendEntites
     }
 
-    function editMessage(messageID, text) {
+    function editMessage (messageID, text) {
       if (!angular.isString(text) ||
           !canEditMessage(messageID)) {
         return $q.reject()
@@ -2570,7 +2570,7 @@ angular.module('myApp.services')
       return replyMarkup
     }
 
-    function wrapMessageText(msgID) {
+    function wrapMessageText (msgID) {
       var message = getMessage(msgID)
       var fromUser = message.from_id && AppUsersManager.getUser(message.from_id)
       var fromBot = fromUser && fromUser.pFlags.bot && fromUser.username || false
@@ -2765,6 +2765,9 @@ angular.module('myApp.services')
             prevMessage.grouped += ' im_grouped_fwd_end'
           }
         }
+        if (curMessage.grouped && curMessage.grouped !== '') {
+          curMessage.grouped += ' im__grouped'
+        }
         if (!wasUpdated && prevGrouped != (prevMessage && prevMessage.grouped)) {
           wasUpdated = true
         }
@@ -2847,7 +2850,7 @@ angular.module('myApp.services')
           notificationMessage = RichTextProcessor.wrapPlainText(message.message)
         }
       } else if (message.media) {
-        var captionEmoji = false;
+        var captionEmoji = false
         switch (message.media._) {
           case 'messageMediaPhoto':
             notificationMessage = _('conversation_media_photo_raw')
@@ -3100,7 +3103,7 @@ angular.module('myApp.services')
       notificationsToHandle = {}
     }
 
-    function handleUpdate(update) {
+    function handleUpdate (update) {
       switch (update._) {
         case 'updateMessageID':
           var randomID = update.random_id
@@ -3160,7 +3163,7 @@ angular.module('myApp.services')
           // console.warn(dT(), 'message unread', message.mid, message.pFlags.unread)
 
           if (historyStorage === undefined) {
-           historyStorage = historiesStorage[peerID] = {
+            historyStorage = historiesStorage[peerID] = {
               count: null,
               history: [],
               pending: []
@@ -3705,7 +3708,7 @@ angular.module('myApp.services')
       }).then(applyConversations)
     }
 
-    function applyConversations(dialogsResult) {
+    function applyConversations (dialogsResult) {
       AppUsersManager.saveApiUsers(dialogsResult.users)
       AppChatsManager.saveApiChats(dialogsResult.chats)
       saveMessages(dialogsResult.messages)
