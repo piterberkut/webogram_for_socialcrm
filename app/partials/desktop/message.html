@@ -23,10 +23,10 @@
     </div>
 
     <div ng-switch-default class="im_content_message_wrap im_content_message_wrap-2"
-         data-peerID="{{historyMessage.fromID}}"
+         data-peer="{{historyMessage.fromID}}"
          data-username="{{historyMessage.fromData.username}}"
-         data-firstName="{{historyMessage.fromData.first_name}}"
-         data-lastName="{{historyMessage.fromData.last_name}}"
+         data-firstname="{{historyMessage.fromData.first_name}}"
+         data-lastname="{{historyMessage.fromData.last_name}}"
          data-phone="{{historyMessage.fromData.rPhone}}"
 
          ng-class="::[historyMessage.pFlags.out ? 'im_message_out' : 'im_message_in', historyMessage.fwdFromID ? 'im_message_fwd' : '']">
