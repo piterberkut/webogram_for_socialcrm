@@ -40,14 +40,14 @@ angular.module('izhukov.utils', [])
     return {
       when: function (result) {
         return {then: function (cb) {
-            return cb(result)
+          return cb(result)
         }}
       },
       reject: function (result) {
         return {then: function (cb, badcb) {
-            if (badcb) {
-              return badcb(result)
-            }
+          if (badcb) {
+            return badcb(result)
+          }
         }}
       }
     }
@@ -105,7 +105,7 @@ angular.module('izhukov.utils', [])
       }
       else if (bytes instanceof Blob) { // is file bytes
         fileWriter.write(bytes)
-      }else {
+      } else {
         try {
           var blob = blobConstruct([bytesToArrayBuffer(bytes)])
           fileWriter.write(blob)
@@ -1198,7 +1198,7 @@ angular.module('izhukov.utils', [])
       '\\u3003\\u3005\\u303b' + // Kanji/Han iteration marks
       '\\uff21-\\uff3a\\uff41-\\uff5a' + // full width Alphabet
       '\\uff66-\\uff9f' + // half width Katakana
-      '\\uffa1-\\uffdc'; // half width Hangul (Korean)
+      '\\uffa1-\\uffdc' // half width Hangul (Korean)
 
     var alphaNumericRegExp = '0-9\_' + alphaCharsRegExp
 
@@ -1412,9 +1412,9 @@ angular.module('izhukov.utils', [])
     }
 
     function parseMarkdown (text, entities, noTrim) {
-      if (!markdownTestRegExp.test(text)) {
-        return noTrim ? text : text.trim()
-      }
+                                                                                                          if (!markdownTestRegExp.test(text)) {
+   return noTrim ? text : text.trim()
+ }
       var raw = text
       var match
       var newText = []
@@ -1673,7 +1673,7 @@ angular.module('izhukov.utils', [])
               inner = encodeEntities(replaceUrlEncodings(entityText))
             }
             if (options.noLinks) {
-              html.push(inner);
+              html.push(inner)
             } else {
               html.push(
                 '<a href="',
@@ -1877,7 +1877,7 @@ angular.module('izhukov.utils', [])
       return url
     }
 
-    function replaceUrlEncodings(urlWithEncoded) {
+    function replaceUrlEncodings (urlWithEncoded) {
       return urlWithEncoded.replace(/(%[A-Z\d]{2})+/g, function (str) {
         try {
           return decodeURIComponent(str)
@@ -2025,7 +2025,7 @@ angular.module('izhukov.utils', [])
       console.warn('The user has blocked notifications.')
     }
 
-    function start() {
+    function start () {
       if (!started) {
         started = true
         getSubscription()
@@ -2033,36 +2033,36 @@ angular.module('izhukov.utils', [])
       }
     }
 
-    function setLocalNotificationsDisabled() {
+    function setLocalNotificationsDisabled () {
       localNotificationsAvailable = false
     }
 
-    function getSubscription() {
+    function getSubscription () {
       if (!isAvailable) {
         return
       }
-      navigator.serviceWorker.ready.then(function(reg) {
-        reg.pushManager.getSubscription().then(function(subscription) {
+      navigator.serviceWorker.ready.then(function (reg) {
+        reg.pushManager.getSubscription().then(function (subscription) {
           isPushEnabled = subscription ? true : false
           pushSubscriptionNotify('init', subscription)
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log('Error during getSubscription()', err)
         })
       })
     }
 
-    function subscribe() {
+    function subscribe () {
       if (!isAvailable) {
         return
       }
-      navigator.serviceWorker.ready.then(function(reg) {
-        reg.pushManager.subscribe({userVisibleOnly: userVisibleOnly}).then(function(subscription) {
+      navigator.serviceWorker.ready.then(function (reg) {
+        reg.pushManager.subscribe({userVisibleOnly: userVisibleOnly}).then(function (subscription) {
           // The subscription was successful
           isPushEnabled = true
           pushSubscriptionNotify('subscribe', subscription)
         })
-        .catch(function(e) {
+        .catch(function (e) {
           if (Notification.permission === 'denied') {
             console.log('Permission for Notifications was denied')
           } else {
@@ -2076,57 +2076,57 @@ angular.module('izhukov.utils', [])
       })
     }
 
-    function unsubscribe() {
+    function unsubscribe () {
       if (!isAvailable) {
         return
       }
-      navigator.serviceWorker.ready.then(function(reg) {
+      navigator.serviceWorker.ready.then(function (reg) {
         reg.pushManager.getSubscription().then(function (subscription) {
           isPushEnabled = false
 
           if (subscription) {
             pushSubscriptionNotify('unsubscribe', subscription)
 
-            setTimeout(function() {
-              subscription.unsubscribe().then(function(successful) {
+            setTimeout(function () {
+              subscription.unsubscribe().then(function (successful) {
                 isPushEnabled = false
-              }).catch(function(e) {
+              }).catch(function (e) {
                 console.error('Unsubscription error: ', e)
               })
             }, 3000)
           }
 
-        }).catch(function(e) {
+        }).catch(function (e) {
           console.error('Error thrown while unsubscribing from ' +
             'push messaging.', e)
         })
       })
     }
 
-    function forceUnsubscribe() {
+    function forceUnsubscribe () {
       if (!isAvailable) {
         return
       }
-      navigator.serviceWorker.ready.then(function(reg) {
+      navigator.serviceWorker.ready.then(function (reg) {
         reg.pushManager.getSubscription().then(function (subscription) {
           console.warn('force unsubscribe', subscription)
           if (subscription) {
-            subscription.unsubscribe().then(function(successful) {
+            subscription.unsubscribe().then(function (successful) {
               console.warn('force unsubscribe successful', successful)
               isPushEnabled = false
-            }).catch(function(e) {
+            }).catch(function (e) {
               console.error('Unsubscription error: ', e)
             })
           }
 
-        }).catch(function(e) {
+        }).catch(function (e) {
           console.error('Error thrown while unsubscribing from ' +
             'push messaging.', e)
         })
       })
     }
 
-    function isAliveNotify() {
+    function isAliveNotify () {
       if (!isAvailable ||
           $rootScope.idle && $rootScope.idle.deactivated) {
         return
@@ -2145,7 +2145,7 @@ angular.module('izhukov.utils', [])
             ? 'push_action_settings_mobile_raw'
             : 'push_action_settings_raw'
           ),
-          push_message_nopreview: _('push_message_nopreview_raw'),
+          push_message_nopreview: _('push_message_nopreview_raw')
         },
         settings: settings
       }
@@ -2155,13 +2155,13 @@ angular.module('izhukov.utils', [])
       isAliveTO = setTimeout(isAliveNotify, 10000)
     }
 
-    function setSettings(newSettings) {
+    function setSettings (newSettings) {
       settings = angular.copy(newSettings)
       clearTimeout(isAliveTO)
       isAliveNotify()
     }
 
-    function hidePushNotifications() {
+    function hidePushNotifications () {
       if (!isAvailable) {
         return
       }
@@ -2171,11 +2171,11 @@ angular.module('izhukov.utils', [])
       }
     }
 
-    function setUpServiceWorkerChannel() {
+    function setUpServiceWorkerChannel () {
       if (!isAvailable) {
         return
       }
-      navigator.serviceWorker.addEventListener('message', function(event) {
+      navigator.serviceWorker.addEventListener('message', function (event) {
         if (event.data &&
             event.data.type == 'push_click') {
           if ($rootScope.idle && $rootScope.idle.deactivated) {
@@ -2189,7 +2189,7 @@ angular.module('izhukov.utils', [])
     }
 
 
-    function pushSubscriptionNotify(event, subscription) {
+    function pushSubscriptionNotify (event, subscription) {
       if (subscription) {
         var subscriptionObj = subscription.toJSON()
         if (!subscriptionObj ||

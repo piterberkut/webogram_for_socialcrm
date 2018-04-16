@@ -31,7 +31,7 @@
               <ul class="nav nav-pills nav-stacked">
                 <li class="im_dialog_wrap" ng-repeat="myResult in myResults track by myResult.id" ng-class="{active: selectedPeers[myResult.id] !== undefined}">
                   <a class="im_dialog im_dialog2" my-peer-id="myResult.peerID" ng-click="dialogSelect(myResult.peerString)">
-                    <div class="im_dialog_photo pull-left" my-peer-photolink="::myResult.id" img-class="im_dialog_photo"></div>
+                    <div class="im_dialog_photo pull-left" my-peer-photolink="::myResult.id" img-class="im_dialog_photo scrm-avatar"></div>
                     <div class="im_dialog_message_wrap">
                       <div class="im_dialog_peer">
                         <span class="im_dialog_user" my-peer-link="myResult.id"></span>
@@ -51,7 +51,7 @@
               <ul class="nav nav-pills nav-stacked">
                 <li class="im_dialog_wrap" ng-repeat="foundPeer in foundPeers track by foundPeer.id" ng-class="{active: selectedPeers[foundPeer.id] !== undefined}">
                   <a class="im_dialog im_dialog3" ng-click="dialogSelect(foundPeer.peerString)">
-                    <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo" watch="true"></div>
+                    <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo scrm-avatar" watch="true"></div>
                     <div class="im_dialog_message_wrap">
                       <div class="im_dialog_peer">
                         <span class="im_dialog_user" my-peer-link="foundPeer.id"></span>

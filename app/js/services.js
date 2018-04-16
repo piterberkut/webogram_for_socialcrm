@@ -563,6 +563,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
           }
           if (this.result.photo && this.result.photo[0]) {
             try {
+              console.warn(this.result.photo[0])
               contact.photo = FileManager.getUrl(this.result.photo[0])
             } catch (e) {}
           }

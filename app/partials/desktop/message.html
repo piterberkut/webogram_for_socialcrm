@@ -37,7 +37,7 @@
       </a>
       <i ng-if="::historyMessage.pFlags.unread &amp;&amp; historyMessage.pFlags.out || historyMessage.pending || false" class="icon-message-status" ng-show="!historyMessage.error"></i>
 
-      <a class="im_message_from_photo pull-left" my-peer-photolink="::historyMessage.fromID" img-class="im_message_from_photo"></a>
+      <a class="im_message_from_photo scrm-avatar pull-left" my-peer-photolink="::historyMessage.fromID" img-class="im_message_from_photo"></a>
 
       <div class="im_message_meta pull-right text-right noselect">
         <div class="im_message_views_wrap" ng-if="::!historyMessage.fwdFromID && historyMessage.views > 0">

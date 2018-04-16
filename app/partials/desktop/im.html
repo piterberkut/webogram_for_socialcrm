@@ -36,7 +36,7 @@
                     </div>
                   </div>
 
-                  <div class="im_dialog_photo pull-left" my-peer-photolink="searchPeer" img-class="im_dialog_photo" watch="true" for-dialog="true"></div>
+                  <div class="im_dialog_photo pull-left" my-peer-photolink="searchPeer" img-class="im_dialog_photo scrm-avatar" watch="true" for-dialog="true"></div>
 
                   <div class="im_dialog_message_wrap">
 
@@ -68,7 +68,7 @@
                      data-phone="{{myResult.userData.rPhone}}"
 
                      my-peer-id="::myResult.peerID" ng-mousedown="dialogSelect(myResult.peerString)">
-                    <div class="im_dialog_photo pull-left" my-peer-photolink="myResult.id" img-class="im_dialog_photo" watch="true" for-dialog="true"></div>
+                    <div class="im_dialog_photo pull-left" my-peer-photolink="myResult.id" img-class="im_dialog_photo scrm-avatar" watch="true" for-dialog="true"></div>
                     <div class="im_dialog_message_wrap">
                       <div class="im_dialog_peer">
                         <span class="im_dialog_user" my-peer-link="myResult.id"  verified="true" for-dialog="true"></span>
@@ -88,7 +88,7 @@
               <ul class="nav nav-pills nav-stacked">
                 <li class="im_dialog_wrap" ng-repeat="foundPeer in foundPeers track by foundPeer.id" ng-class="{active: curDialog.peerID == foundPeer.id}">
                   <a class="im_dialog im_dialog-1" ng-mousedown="dialogSelect(foundPeer.peerString)">
-                    <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo" watch="true" for-dialog="true"></div>
+                    <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo scrm-avatar" watch="true" for-dialog="true"></div>
                     <div class="im_dialog_message_wrap">
                       <div class="im_dialog_peer">
                         <span class="im_dialog_user" my-peer-link="foundPeer.id"  verified="true" for-dialog="true"></span>
@@ -225,7 +225,7 @@
                      data-firstName="{{historyPeer.data.first_name}}"
                      data-lastName="{{historyPeer.data.last_name}}"
                      data-phone="{{historyPeer.data.rPhone}}"
-                     my-peer-photolink="historyPeer.id" img-class="im_panel_peer_photo" watch="true" for-dialog="true" ng-show="!draftMessage.isBroadcast">
+                     my-peer-photolink="historyPeer.id" img-class="im_panel_peer_photo scrm-avatar" watch="true" for-dialog="true" ng-show="!draftMessage.isBroadcast">
                     <i class="icon im_panel_peer_online" ng-show="historyPeer.id > 0 &amp;&amp; historyPeer.data.status._ == 'userStatusOnline'"></i>
                   </a>
                   <a class="pull-left im_panel_own_photo" data-ownid="{{ownID}}" my-peer-photolink="draftMessage.isBroadcast ? historyPeer.id : ownID" img-class="im_panel_own_photo" watch="true" ng-click="openSettings()" no-open="true"></a>
